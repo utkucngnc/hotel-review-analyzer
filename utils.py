@@ -1,6 +1,7 @@
 import pandas as pd
 from omegaconf import OmegaConf
 from matplotlib import pyplot as plt
+from nltk.corpus import stopwords
 
 def read_config(path: str = "./config.yaml") -> dict:
     config = OmegaConf.load(path)
@@ -31,4 +32,17 @@ def plot_distribution(data: pd.DataFrame, keys: list, fig_size: tuple = (8,6)) -
         ax.set_title(key)
     
     plt.show()
+
+def plot_wordcloud(data: pd.DataFrame, key: str = 'Text', fig_size: tuple = (8,6)) -> None:
+    plt.figure(figsize=fig_size)
+    plt.suptitle("Word Cloud", fontsize=18, y=0.95)
     
+    text = " ".join(data[key].values)
+    stopwords = set(stopwords.words("english"))
+    
+    wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
+    
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    
+    plt.show()
