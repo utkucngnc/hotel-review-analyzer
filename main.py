@@ -1,6 +1,10 @@
 from utils import *
+from basic import BasicClassifier as bc
 
 cfg = read_config()
-df = read_data(f"{cfg.data.path}-preprocessed.csv")
+df_preprocessed = read_data(cfg.data_preprocessed.path)
 
-plot_wordcloud(df, key='Text', fig_size=(8,6))
+clsfr = bc(df_preprocessed, cfg.data_preprocessed.heads)
+model = clsfr.load_model(cfg.model.save_path)
+
+print(model.predict(["bad"]))

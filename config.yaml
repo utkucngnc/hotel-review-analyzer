@@ -1,6 +1,10 @@
 data:
-  path: ./tripadvisor_hotel_reviews.csv
-  subset: Review
+  path: ./data.csv
+  subset: Text
+
+data_preprocessed:
+  path: ./data-preprocessed.csv
+  heads: ["Text", "Rating"]
 
 preprocess:
   contraction_mapping: {
@@ -28,3 +32,8 @@ preprocess:
                         "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have",
                         "you're": "you are", "you've": "you have"
                         }
+  lemmatize: True
+  save: True
+
+model:
+  save_path: ./model.pkl
