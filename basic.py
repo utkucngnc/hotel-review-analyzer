@@ -6,7 +6,6 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import SGDClassifier
 from sklearn.linear_model import LogisticRegression
 import pickle
-from tqdm import tqdm
 
 class BasicClassifier:
     def __init__(self, df, heads) -> None:

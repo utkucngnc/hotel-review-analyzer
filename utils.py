@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import numpy as np
 from wordcloud import WordCloud
+from nltk.corpus import stopwords
 
 def read_config(path: str = "./config.yaml") -> dict:
     config = OmegaConf.load(path)
@@ -40,9 +41,9 @@ def plot_wordcloud(data: pd.DataFrame, key: str = 'Text', fig_size: tuple = (8,6
     plt.suptitle("Word Cloud", fontsize=18, y=0.95)
     
     text = " ".join(data[key].values)
-    stopwords = set(stopwords.words("english"))
+    stop_words = set(stopwords.words("english"))
     
-    wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
+    wordcloud = WordCloud(stopwords=stop_words, background_color="white").generate(text)
     
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
