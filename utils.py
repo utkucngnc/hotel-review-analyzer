@@ -3,6 +3,7 @@ from omegaconf import OmegaConf
 from matplotlib import pyplot as plt
 import seaborn as sns
 import numpy as np
+from wordcloud import WordCloud
 
 def read_config(path: str = "./config.yaml") -> dict:
     config = OmegaConf.load(path)
