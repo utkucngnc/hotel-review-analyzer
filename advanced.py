@@ -53,7 +53,5 @@ class AdvancedClassifier:
                             eval_dataset=self.eval_dataset
                         )
         trainer.train()
-
-    
     # Add inference function here
     # Inputs can be a prompt or from a file
