@@ -1,6 +1,11 @@
 from utils import *
+from advanced import AdvancedClassifier
 
-cfg = read_config()
-df_preprocessed = read_data(cfg.data_preprocessed.path)
+def main():
+    cfg = read_config("config.yaml")
+    classifier = AdvancedClassifier(cfg)
+    classifier.train()
+    # classifier.inference()
 
-plot_wordcloud(df_preprocessed)
+if __name__ == "__main__":
+    main()

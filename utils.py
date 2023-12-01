@@ -5,11 +5,17 @@ import seaborn as sns
 import numpy as np
 from wordcloud import WordCloud
 from nltk.corpus import stopwords
+import torch
 
 def read_config(path: str = "./config.yaml") -> dict:
     config = OmegaConf.load(path)
     
     return config
+
+def get_device() -> str:
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    
+    return device
 
 def read_data(path: str) -> pd.DataFrame:
     data = pd.read_csv(path)
