@@ -44,7 +44,8 @@ class AdvancedClassifier:
                                             warmup_steps=cfg.advanced_model.warmup_steps,
                                             weight_decay=cfg.advanced_model.weight_decay,
                                             logging_dir=cfg.advanced_model.logging_dir,
-                                            logging_steps=cfg.advanced_model.logging_steps
+                                            logging_steps=cfg.advanced_model.logging_steps,
+                                            gradient_checkpointing=True
                                         )
         trainer = Trainer(
                             model=self.model_pretrained, 
